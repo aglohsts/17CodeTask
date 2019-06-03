@@ -28,6 +28,10 @@ class ResultViewController: CTBaseViewController {
 
 }
 
+extension ResultViewController: UICollectionViewDelegateFlowLayout {
+    
+}
+
 extension ResultViewController: UICollectionViewDelegate {
     
 }

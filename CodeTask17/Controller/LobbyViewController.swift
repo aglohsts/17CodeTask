@@ -8,13 +8,41 @@
 
 import UIKit
 
-class ViewController: CTBaseViewController {
+class LobbyViewController: CTBaseViewController {
 
+    @IBOutlet weak var searchTextField: UITextField!
+    
+    @IBOutlet weak var searchButton: UIButton!
+    
+    @IBOutlet weak var cancelButton: UIButton!
+    
+    @IBOutlet weak var resultContainerView: UIView!
+    
+    var isSearching: Bool = false {
+        
+        didSet {
+            
+            if isSearching {
+                
+                resultContainerView.isHidden = false
+                
+            } else {
+                
+                resultContainerView.isHidden = true
+            }
+        }
+    }
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view.
     }
 
-
+    @IBAction func onSearch(_ sender: Any) {
+    }
+    
+    @IBAction func onCancel(_ sender: Any) {
+    }
+    
 }
 

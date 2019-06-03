@@ -17,6 +17,10 @@
 		CA4CC88522A4C7B5004F0C33 /* KingfisherWrapper.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA4CC88422A4C7B5004F0C33 /* KingfisherWrapper.swift */; };
 		CA4CC88822A4CA0B004F0C33 /* UICollectionView+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA4CC88722A4CA0B004F0C33 /* UICollectionView+Extension.swift */; };
 		CA4CC88A22A4D0ED004F0C33 /* ResultViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA4CC88922A4D0ED004F0C33 /* ResultViewController.swift */; };
+		CA4CC88D22A4DCAC004F0C33 /* UserObject.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA4CC88C22A4DCAC004F0C33 /* UserObject.swift */; };
+		CA4CC88F22A4F7C0004F0C33 /* UserProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA4CC88E22A4F7C0004F0C33 /* UserProvider.swift */; };
+		CA4CC89322A4FB14004F0C33 /* CTConstant.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA4CC89222A4FB14004F0C33 /* CTConstant.swift */; };
+		CA4CC89522A4FC0B004F0C33 /* Bundle+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA4CC89422A4FC0B004F0C33 /* Bundle+Extension.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -25,13 +29,17 @@
 		CA4CC86B22A4B75B004F0C33 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		CA4CC86D22A4B75B004F0C33 /* LobbyViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LobbyViewController.swift; sourceTree = "<group>"; };
 		CA4CC87022A4B75B004F0C33 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Lobby.storyboard; sourceTree = "<group>"; };
-		CA4CC87222A4B765004F0C33 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
+		CA4CC87222A4B765004F0C33 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; name = Assets.xcassets; path = ../Assets.xcassets; sourceTree = "<group>"; };
 		CA4CC87522A4B765004F0C33 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		CA4CC87722A4B765004F0C33 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		CA4CC88022A4C3CC004F0C33 /* CTBaseViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CTBaseViewController.swift; sourceTree = "<group>"; };
 		CA4CC88422A4C7B5004F0C33 /* KingfisherWrapper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KingfisherWrapper.swift; sourceTree = "<group>"; };
 		CA4CC88722A4CA0B004F0C33 /* UICollectionView+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UICollectionView+Extension.swift"; sourceTree = "<group>"; };
 		CA4CC88922A4D0ED004F0C33 /* ResultViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ResultViewController.swift; sourceTree = "<group>"; };
+		CA4CC88C22A4DCAC004F0C33 /* UserObject.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserObject.swift; sourceTree = "<group>"; };
+		CA4CC88E22A4F7C0004F0C33 /* UserProvider.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserProvider.swift; sourceTree = "<group>"; };
+		CA4CC89222A4FB14004F0C33 /* CTConstant.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CTConstant.swift; sourceTree = "<group>"; };
+		CA4CC89422A4FC0B004F0C33 /* Bundle+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Bundle+Extension.swift"; sourceTree = "<group>"; };
 		D0FC33726D2988F457BEF520 /* Pods_CodeTask17.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_CodeTask17.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		FD2D7EB3A5A87A92740179C9 /* Pods-CodeTask17.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-CodeTask17.debug.xcconfig"; path = "Target Support Files/Pods-CodeTask17/Pods-CodeTask17.debug.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -86,13 +94,13 @@
 		CA4CC86A22A4B75B004F0C33 /* CodeTask17 */ = {
 			isa = PBXGroup;
 			children = (
+				CA4CC89022A4FAC0004F0C33 /* Resource */,
 				CA4CC88622A4C9F2004F0C33 /* Extension */,
 				CA4CC88322A4C790004F0C33 /* ThirdPartyWrapper */,
 				CA4CC87D22A4C267004F0C33 /* Model */,
 				CA4CC87F22A4C27E004F0C33 /* Controller */,
 				CA4CC87E22A4C274004F0C33 /* View */,
 				CA4CC86B22A4B75B004F0C33 /* AppDelegate.swift */,
-				CA4CC87222A4B765004F0C33 /* Assets.xcassets */,
 				CA4CC87422A4B765004F0C33 /* LaunchScreen.storyboard */,
 				CA4CC87722A4B765004F0C33 /* Info.plist */,
 			);
@@ -102,6 +110,7 @@
 		CA4CC87D22A4C267004F0C33 /* Model */ = {
 			isa = PBXGroup;
 			children = (
+				CA4CC88B22A4DC8C004F0C33 /* User */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -117,8 +126,8 @@
 		CA4CC87F22A4C27E004F0C33 /* Controller */ = {
 			isa = PBXGroup;
 			children = (
-				CA4CC86D22A4B75B004F0C33 /* LobbyViewController.swift */,
 				CA4CC88022A4C3CC004F0C33 /* CTBaseViewController.swift */,
+				CA4CC86D22A4B75B004F0C33 /* LobbyViewController.swift */,
 				CA4CC88922A4D0ED004F0C33 /* ResultViewController.swift */,
 			);
 			path = Controller;
@@ -136,8 +145,35 @@
 			isa = PBXGroup;
 			children = (
 				CA4CC88722A4CA0B004F0C33 /* UICollectionView+Extension.swift */,
+				CA4CC89422A4FC0B004F0C33 /* Bundle+Extension.swift */,
 			);
 			path = Extension;
+			sourceTree = "<group>";
+		};
+		CA4CC88B22A4DC8C004F0C33 /* User */ = {
+			isa = PBXGroup;
+			children = (
+				CA4CC88C22A4DCAC004F0C33 /* UserObject.swift */,
+				CA4CC88E22A4F7C0004F0C33 /* UserProvider.swift */,
+			);
+			path = User;
+			sourceTree = "<group>";
+		};
+		CA4CC89022A4FAC0004F0C33 /* Resource */ = {
+			isa = PBXGroup;
+			children = (
+				CA4CC89122A4FAD3004F0C33 /* Constant */,
+				CA4CC87222A4B765004F0C33 /* Assets.xcassets */,
+			);
+			path = Resource;
+			sourceTree = "<group>";
+		};
+		CA4CC89122A4FAD3004F0C33 /* Constant */ = {
+			isa = PBXGroup;
+			children = (
+				CA4CC89222A4FB14004F0C33 /* CTConstant.swift */,
+			);
+			path = Constant;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -256,11 +292,15 @@
 			buildActionMask = 2147483647;
 			files = (
 				CA4CC86E22A4B75B004F0C33 /* LobbyViewController.swift in Sources */,
+				CA4CC89522A4FC0B004F0C33 /* Bundle+Extension.swift in Sources */,
 				CA4CC88822A4CA0B004F0C33 /* UICollectionView+Extension.swift in Sources */,
 				CA4CC88522A4C7B5004F0C33 /* KingfisherWrapper.swift in Sources */,
 				CA4CC88122A4C3CC004F0C33 /* CTBaseViewController.swift in Sources */,
+				CA4CC89322A4FB14004F0C33 /* CTConstant.swift in Sources */,
 				CA4CC86C22A4B75B004F0C33 /* AppDelegate.swift in Sources */,
 				CA4CC88A22A4D0ED004F0C33 /* ResultViewController.swift in Sources */,
+				CA4CC88D22A4DCAC004F0C33 /* UserObject.swift in Sources */,
+				CA4CC88F22A4F7C0004F0C33 /* UserProvider.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
