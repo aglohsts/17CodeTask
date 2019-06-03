@@ -15,6 +15,8 @@
 		CA4CC87622A4B765004F0C33 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = CA4CC87422A4B765004F0C33 /* LaunchScreen.storyboard */; };
 		CA4CC88122A4C3CC004F0C33 /* CTBaseViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA4CC88022A4C3CC004F0C33 /* CTBaseViewController.swift */; };
 		CA4CC88522A4C7B5004F0C33 /* KingfisherWrapper.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA4CC88422A4C7B5004F0C33 /* KingfisherWrapper.swift */; };
+		CA4CC88822A4CA0B004F0C33 /* UICollectionView+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA4CC88722A4CA0B004F0C33 /* UICollectionView+Extension.swift */; };
+		CA4CC88A22A4D0ED004F0C33 /* ResultViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA4CC88922A4D0ED004F0C33 /* ResultViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -28,6 +30,8 @@
 		CA4CC87722A4B765004F0C33 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		CA4CC88022A4C3CC004F0C33 /* CTBaseViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CTBaseViewController.swift; sourceTree = "<group>"; };
 		CA4CC88422A4C7B5004F0C33 /* KingfisherWrapper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KingfisherWrapper.swift; sourceTree = "<group>"; };
+		CA4CC88722A4CA0B004F0C33 /* UICollectionView+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UICollectionView+Extension.swift"; sourceTree = "<group>"; };
+		CA4CC88922A4D0ED004F0C33 /* ResultViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ResultViewController.swift; sourceTree = "<group>"; };
 		D0FC33726D2988F457BEF520 /* Pods_CodeTask17.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_CodeTask17.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		FD2D7EB3A5A87A92740179C9 /* Pods-CodeTask17.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-CodeTask17.debug.xcconfig"; path = "Target Support Files/Pods-CodeTask17/Pods-CodeTask17.debug.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -82,6 +86,7 @@
 		CA4CC86A22A4B75B004F0C33 /* CodeTask17 */ = {
 			isa = PBXGroup;
 			children = (
+				CA4CC88622A4C9F2004F0C33 /* Extension */,
 				CA4CC88322A4C790004F0C33 /* ThirdPartyWrapper */,
 				CA4CC87D22A4C267004F0C33 /* Model */,
 				CA4CC87F22A4C27E004F0C33 /* Controller */,
@@ -114,6 +119,7 @@
 			children = (
 				CA4CC86D22A4B75B004F0C33 /* LobbyViewController.swift */,
 				CA4CC88022A4C3CC004F0C33 /* CTBaseViewController.swift */,
+				CA4CC88922A4D0ED004F0C33 /* ResultViewController.swift */,
 			);
 			path = Controller;
 			sourceTree = "<group>";
@@ -124,6 +130,14 @@
 				CA4CC88422A4C7B5004F0C33 /* KingfisherWrapper.swift */,
 			);
 			path = ThirdPartyWrapper;
+			sourceTree = "<group>";
+		};
+		CA4CC88622A4C9F2004F0C33 /* Extension */ = {
+			isa = PBXGroup;
+			children = (
+				CA4CC88722A4CA0B004F0C33 /* UICollectionView+Extension.swift */,
+			);
+			path = Extension;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -242,9 +256,11 @@
 			buildActionMask = 2147483647;
 			files = (
 				CA4CC86E22A4B75B004F0C33 /* LobbyViewController.swift in Sources */,
+				CA4CC88822A4CA0B004F0C33 /* UICollectionView+Extension.swift in Sources */,
 				CA4CC88522A4C7B5004F0C33 /* KingfisherWrapper.swift in Sources */,
 				CA4CC88122A4C3CC004F0C33 /* CTBaseViewController.swift in Sources */,
 				CA4CC86C22A4B75B004F0C33 /* AppDelegate.swift in Sources */,
+				CA4CC88A22A4D0ED004F0C33 /* ResultViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -394,7 +410,7 @@
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = 54Y59X3FBZ;
 				INFOPLIST_FILE = CodeTask17/Info.plist;
-				IPHONEOS_DEPLOYMENT_TARGET = 12.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 11.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -414,7 +430,7 @@
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = 54Y59X3FBZ;
 				INFOPLIST_FILE = CodeTask17/Info.plist;
-				IPHONEOS_DEPLOYMENT_TARGET = 12.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 11.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
