@@ -31,9 +31,11 @@
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="XYL-40-cU9">
                                 <rect key="frame" x="0.0" y="44" width="414" height="100"/>
                                 <subviews>
-                                    <textField opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="9aL-Pi-fCe">
-                                        <rect key="frame" x="8" y="62" width="97" height="30"/>
-                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                    <textField opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="249" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="9aL-Pi-fCe">
+                                        <rect key="frame" x="12" y="64" width="278" height="30"/>
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="30" id="64M-vr-oms"/>
+                                        </constraints>
                                         <nil key="textColor"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                         <textInputTraits key="textInputTraits"/>
@@ -42,29 +44,27 @@
                                         </connections>
                                     </textField>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Please enter keyword to search users." textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="cMV-aG-Ac0">
-                                        <rect key="frame" x="56" y="19" width="260" height="18"/>
+                                        <rect key="frame" x="60" y="23" width="260" height="18"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="15"/>
                                         <nil key="textColor"/>
                                         <nil key="highlightedColor"/>
                                     </label>
-                                    <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="aas-Vc-8yX">
-                                        <rect key="frame" x="8" y="8" width="40" height="40"/>
+                                    <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="github" translatesAutoresizingMaskIntoConstraints="NO" id="aas-Vc-8yX">
+                                        <rect key="frame" x="12" y="12" width="40" height="40"/>
                                         <constraints>
                                             <constraint firstAttribute="width" constant="40" id="UwH-Fa-joQ"/>
                                             <constraint firstAttribute="height" constant="40" id="iRU-Vd-kl9"/>
                                         </constraints>
                                     </imageView>
-                                    <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="WMi-1p-Cgz">
-                                        <rect key="frame" x="359" y="62" width="48" height="30"/>
-                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="WMi-1p-Cgz">
+                                        <rect key="frame" x="354" y="64" width="48" height="30"/>
                                         <state key="normal" title="Cancel"/>
                                         <connections>
                                             <action selector="onCancel:" destination="BYZ-38-t0r" eventType="touchUpInside" id="uGH-Oo-jb8"/>
                                         </connections>
                                     </button>
-                                    <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="7af-bB-bHk">
-                                        <rect key="frame" x="287" y="62" width="48" height="30"/>
-                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="7af-bB-bHk">
+                                        <rect key="frame" x="298" y="64" width="48" height="30"/>
                                         <state key="normal" title="Search"/>
                                         <connections>
                                             <action selector="onSearch:" destination="BYZ-38-t0r" eventType="touchUpInside" id="31N-2x-fM3"/>
@@ -73,9 +73,16 @@
                                 </subviews>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <constraints>
+                                    <constraint firstAttribute="trailing" secondItem="WMi-1p-Cgz" secondAttribute="trailing" constant="12" id="DCc-LO-GNk"/>
+                                    <constraint firstItem="9aL-Pi-fCe" firstAttribute="top" secondItem="aas-Vc-8yX" secondAttribute="bottom" constant="12" id="Dnv-HY-i5w"/>
+                                    <constraint firstItem="WMi-1p-Cgz" firstAttribute="centerY" secondItem="7af-bB-bHk" secondAttribute="centerY" id="IMn-jQ-fRM"/>
+                                    <constraint firstItem="WMi-1p-Cgz" firstAttribute="leading" secondItem="7af-bB-bHk" secondAttribute="trailing" constant="8" id="NEU-5G-zGb"/>
                                     <constraint firstItem="cMV-aG-Ac0" firstAttribute="centerY" secondItem="aas-Vc-8yX" secondAttribute="centerY" id="VHW-iZ-hqp"/>
-                                    <constraint firstItem="aas-Vc-8yX" firstAttribute="leading" secondItem="XYL-40-cU9" secondAttribute="leading" constant="8" id="hrG-xW-SfL"/>
-                                    <constraint firstItem="aas-Vc-8yX" firstAttribute="top" secondItem="XYL-40-cU9" secondAttribute="top" constant="8" id="oF9-gh-Js6"/>
+                                    <constraint firstItem="7af-bB-bHk" firstAttribute="centerY" secondItem="9aL-Pi-fCe" secondAttribute="centerY" id="Yn7-IT-fGo"/>
+                                    <constraint firstItem="9aL-Pi-fCe" firstAttribute="leading" secondItem="XYL-40-cU9" secondAttribute="leading" constant="12" id="c9K-V4-V8f"/>
+                                    <constraint firstItem="aas-Vc-8yX" firstAttribute="leading" secondItem="XYL-40-cU9" secondAttribute="leading" constant="12" id="hrG-xW-SfL"/>
+                                    <constraint firstItem="7af-bB-bHk" firstAttribute="leading" secondItem="9aL-Pi-fCe" secondAttribute="trailing" constant="8" id="hui-4c-lcl"/>
+                                    <constraint firstItem="aas-Vc-8yX" firstAttribute="top" secondItem="XYL-40-cU9" secondAttribute="top" constant="12" id="oF9-gh-Js6"/>
                                     <constraint firstAttribute="height" constant="100" id="tx8-Wr-hp1"/>
                                     <constraint firstItem="cMV-aG-Ac0" firstAttribute="leading" secondItem="aas-Vc-8yX" secondAttribute="trailing" constant="8" id="vCi-BA-h2Q"/>
                                 </constraints>
@@ -178,4 +185,7 @@
             <point key="canvasLocation" x="1498.5507246376812" y="138.61607142857142"/>
         </scene>
     </scenes>
+    <resources>
+        <image name="github" width="245" height="245"/>
+    </resources>
 </document>

@@ -69,6 +69,10 @@ class UserProvider {
                         
                         let userObject = try strongSelf.decoder.decode(UserObject.self, from: data)
                         
+                        print(userObject)
+                        
+                        print(userObject.totalCount)
+                        
                         if let linkHeader = httpResponse.allHeaderFields["Link"] as? String {
                             
                             let links = linkHeader.components(separatedBy: ", ")
@@ -103,7 +107,7 @@ class UserProvider {
                             
                             print(dictionary["rel=\"last\""])
                             
-                            completion(.success((userObject, dictionary["rel=\"next\""], dictionary["rel=\"last\""])))
+                            completion(.success((userObject, nil, nil)))
                         }
                         
                     } catch {
