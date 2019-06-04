@@ -21,7 +21,7 @@
                             <containerView hidden="YES" opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="EVh-ij-ySX">
                                 <rect key="frame" x="0.0" y="144" width="414" height="718"/>
                                 <connections>
-                                    <segue destination="WsP-5h-UzC" kind="embed" id="x02-vx-qod"/>
+                                    <segue destination="WsP-5h-UzC" kind="embed" identifier="ResultSegue" id="x02-vx-qod"/>
                                 </connections>
                             </containerView>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Y3u-AZ-s3j">
@@ -163,6 +163,10 @@
                                             <constraint firstItem="drD-3c-PfJ" firstAttribute="top" secondItem="Tmy-Dc-grL" secondAttribute="bottom" constant="8" id="sfn-g8-uZ8"/>
                                             <constraint firstItem="drD-3c-PfJ" firstAttribute="leading" relation="greaterThanOrEqual" secondItem="K6d-yu-nfK" secondAttribute="leading" constant="8" id="xwV-iJ-HyU"/>
                                         </constraints>
+                                        <connections>
+                                            <outlet property="imageView" destination="Tmy-Dc-grL" id="ygf-r0-dDN"/>
+                                            <outlet property="nameLabel" destination="drD-3c-PfJ" id="5az-Q4-DQs"/>
+                                        </connections>
                                     </collectionViewCell>
                                 </cells>
                             </collectionView>

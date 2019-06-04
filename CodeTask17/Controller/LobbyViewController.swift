@@ -9,6 +9,11 @@
 import UIKit
 
 class LobbyViewController: CTBaseViewController {
+    
+    private struct Segue {
+    
+        static let result = "ResultSegue"
+    }
 
     @IBOutlet weak var searchTextField: UITextField!
     
@@ -19,6 +24,8 @@ class LobbyViewController: CTBaseViewController {
     @IBOutlet weak var resultContainerView: UIView!
     
     @objc dynamic var inputText: String?
+    
+    var userObject: UserObject?
     
     var textFieldObservationToken: NSKeyValueObservation?
     
@@ -58,11 +65,26 @@ class LobbyViewController: CTBaseViewController {
             
             getUser(searchKeyWord: inputText)
         }
+        
     }
     
     @IBAction func onCancel(_ sender: Any) {
         
         searchTextField.text = ""
+        
+        
+    }
+    
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        
+        if segue.identifier == Segue.result {
+            
+            guard let resultVC = segue.destination as? ResultViewController,
+                  let userObject = userObject else { return }
+            
+            
+            resultVC.userItems = userObject.items
+        }
     }
     
     func getUser(searchKeyWord: String) {
@@ -74,6 +96,10 @@ class LobbyViewController: CTBaseViewController {
             case .success(let (userObject, nextPagePath, lastPagePath)):
                 
                 print(userObject)
+                
+                self?.userObject = userObject
+                
+//                self?.performSegue(withIdentifier: Segue.result, sender: nil)
                 
                 print(nextPagePath)
                 

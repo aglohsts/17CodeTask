@@ -20,6 +20,8 @@ class ResultViewController: CTBaseViewController {
         }
     }
     
+    var userItems: [UserItem] = []
+    
     override func viewDidLoad() {
         super.viewDidLoad()
     }
@@ -37,7 +39,7 @@ extension ResultViewController: UICollectionViewDataSource {
     
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         
-        return 1 // TODO
+        return userItems.count
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
@@ -48,6 +50,18 @@ extension ResultViewController: UICollectionViewDataSource {
         )
         
         guard let resultCell = cell as? ResultCollectionViewCell else { return UICollectionViewCell() }
+        
+        if userItems.count > 0 {
+            
+            resultCell.layoutCell(
+                imageUrl: userItems[indexPath.item].avatarUrl,
+                userName: userItems[indexPath.item].login)
+            
+            DispatchQueue.main.async { [weak self] in
+                
+                self?.collectionView.reloadData()
+            }
+        }
         
         return resultCell
     }
