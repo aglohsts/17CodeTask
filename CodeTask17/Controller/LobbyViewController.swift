@@ -33,9 +33,24 @@ class LobbyViewController: CTBaseViewController {
         }
     }
     
+    let userProvider = UserProvider()
+    
     override func viewDidLoad() {
         super.viewDidLoad()
-        // Do any additional setup after loading the view.
+        
+        userProvider.getUser(completion: { [weak self] (result) in
+            
+            switch result {
+                
+            case .success(let userObject):
+                
+                print(userObject)
+                
+            case .failure(let error):
+                
+                print(error.localizedDescription)
+            }
+        })
     }
 
     @IBAction func onSearch(_ sender: Any) {

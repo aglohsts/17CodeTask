@@ -21,7 +21,7 @@ enum NetworkError: Error {
     case unexpetedError
 }
 
-typealias UserHandler = (Result<Data, NetworkError>) -> Void
+typealias UserHandler = (Result<UserObject, Error>) -> Void
 
 class UserProvider {
     
@@ -31,20 +31,22 @@ class UserProvider {
     
     func getUser(completion: @escaping UserHandler) {
         
-        let endPoint = ""
+        let endPoint = "/search/users?q=tom"
         
-        let urlString = Bundle.CTValueForString(key: CTConstant.urlKey)
+        let urlString = Bundle.CTValueForString(key: CTConstant.urlKey) + endPoint
         
         guard let url = URL(string: urlString) else {
             
-            completion(.failure(.badURL))
+            completion(.failure(NetworkError.badURL))
             
             return
         }
         
-        let request = URLRequest(url: URL(string: urlString)!)
+        let request = URLRequest(url: url)
         
-        let task = session.dataTask(with: request, completionHandler: { (data, response, error) in
+        let task = session.dataTask(with: request, completionHandler: { [weak self] (data, response, error) in
+            
+            guard let strongSelf = self else { return }
 
             if let data = data {
 
@@ -54,16 +56,30 @@ class UserProvider {
                 
                 switch statusCode {
                     
-                case 200 ..< 300: completion(.success(data))
+                case 200 ..< 300:
                     
-                case 400 ..< 500: completion(.failure(.clientError(data)))
+                    do {
+                        
+                        let userObject = try strongSelf.decoder.decode(UserObject.self, from: data)
+                        
+                        completion(.success(userObject))
+                        
+                    } catch {
+                        
+                        completion(.failure(error))
+                    }
                     
-                case 500 ..< 600: completion(.failure(.serverError))
+                case 400 ..< 500: completion(.failure(NetworkError.clientError(data)))
                     
-                default: completion(.failure(.unexpetedError))
+                case 500 ..< 600: completion(.failure(NetworkError.serverError))
+                    
+                default: completion(.failure(NetworkError.unexpetedError))
                 }
             }
+            
         })
+        
+        task.resume()
         
 //        let task = session.dataTask(with: url, completionHandler: { (data, response, error) in
 //            <#code#>

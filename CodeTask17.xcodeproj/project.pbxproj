@@ -10,7 +10,6 @@
 		63E5DA1AF66C1FEC5E8898B6 /* Pods_CodeTask17.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D0FC33726D2988F457BEF520 /* Pods_CodeTask17.framework */; };
 		CA4CC86C22A4B75B004F0C33 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA4CC86B22A4B75B004F0C33 /* AppDelegate.swift */; };
 		CA4CC86E22A4B75B004F0C33 /* LobbyViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA4CC86D22A4B75B004F0C33 /* LobbyViewController.swift */; };
-		CA4CC87122A4B75B004F0C33 /* Lobby.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = CA4CC86F22A4B75B004F0C33 /* Lobby.storyboard */; };
 		CA4CC87322A4B765004F0C33 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = CA4CC87222A4B765004F0C33 /* Assets.xcassets */; };
 		CA4CC87622A4B765004F0C33 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = CA4CC87422A4B765004F0C33 /* LaunchScreen.storyboard */; };
 		CA4CC88122A4C3CC004F0C33 /* CTBaseViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA4CC88022A4C3CC004F0C33 /* CTBaseViewController.swift */; };
@@ -21,6 +20,8 @@
 		CA4CC88F22A4F7C0004F0C33 /* UserProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA4CC88E22A4F7C0004F0C33 /* UserProvider.swift */; };
 		CA4CC89322A4FB14004F0C33 /* CTConstant.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA4CC89222A4FB14004F0C33 /* CTConstant.swift */; };
 		CA4CC89522A4FC0B004F0C33 /* Bundle+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA4CC89422A4FC0B004F0C33 /* Bundle+Extension.swift */; };
+		CA4CC89622A5ED2A004F0C33 /* Lobby.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = CA4CC86F22A4B75B004F0C33 /* Lobby.storyboard */; };
+		CA4CC89822A600C3004F0C33 /* LobbyCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA4CC89722A600C3004F0C33 /* LobbyCollectionViewCell.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -40,6 +41,7 @@
 		CA4CC88E22A4F7C0004F0C33 /* UserProvider.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserProvider.swift; sourceTree = "<group>"; };
 		CA4CC89222A4FB14004F0C33 /* CTConstant.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CTConstant.swift; sourceTree = "<group>"; };
 		CA4CC89422A4FC0B004F0C33 /* Bundle+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Bundle+Extension.swift"; sourceTree = "<group>"; };
+		CA4CC89722A600C3004F0C33 /* LobbyCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LobbyCollectionViewCell.swift; sourceTree = "<group>"; };
 		D0FC33726D2988F457BEF520 /* Pods_CodeTask17.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_CodeTask17.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		FD2D7EB3A5A87A92740179C9 /* Pods-CodeTask17.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-CodeTask17.debug.xcconfig"; path = "Target Support Files/Pods-CodeTask17/Pods-CodeTask17.debug.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -119,6 +121,7 @@
 			isa = PBXGroup;
 			children = (
 				CA4CC86F22A4B75B004F0C33 /* Lobby.storyboard */,
+				CA4CC89722A600C3004F0C33 /* LobbyCollectionViewCell.swift */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -238,7 +241,7 @@
 			files = (
 				CA4CC87622A4B765004F0C33 /* LaunchScreen.storyboard in Resources */,
 				CA4CC87322A4B765004F0C33 /* Assets.xcassets in Resources */,
-				CA4CC87122A4B75B004F0C33 /* Lobby.storyboard in Resources */,
+				CA4CC89622A5ED2A004F0C33 /* Lobby.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -299,6 +302,7 @@
 				CA4CC89322A4FB14004F0C33 /* CTConstant.swift in Sources */,
 				CA4CC86C22A4B75B004F0C33 /* AppDelegate.swift in Sources */,
 				CA4CC88A22A4D0ED004F0C33 /* ResultViewController.swift in Sources */,
+				CA4CC89822A600C3004F0C33 /* LobbyCollectionViewCell.swift in Sources */,
 				CA4CC88D22A4DCAC004F0C33 /* UserObject.swift in Sources */,
 				CA4CC88F22A4F7C0004F0C33 /* UserProvider.swift in Sources */,
 			);

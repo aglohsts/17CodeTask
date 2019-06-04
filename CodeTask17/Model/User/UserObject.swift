@@ -10,11 +10,20 @@ import Foundation
 
 struct UserObject: Codable {
     
-    let totalAccount: Int
+    let totalCount: Int
     
     let incompleteResults: Bool
     
-    let items: UserItem
+    let items: [UserItem]
+    
+    enum CodingKeys: String, CodingKey {
+        
+        case totalCount = "total_count"
+        
+        case incompleteResults = "incomplete_results"
+        
+        case items
+    }
 }
 
 struct UserItem: Codable {

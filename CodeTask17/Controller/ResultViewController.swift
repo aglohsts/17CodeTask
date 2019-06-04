@@ -45,6 +45,13 @@ extension ResultViewController: UICollectionViewDataSource {
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         
-        return UICollectionViewCell() // TODO
+        let cell = collectionView.dequeueReusableCell(
+            withReuseIdentifier: String(describing: ResultCollectionViewCell.self),
+            for: indexPath
+        )
+        
+        guard let resultCell = cell as? ResultCollectionViewCell else { return UICollectionViewCell() }
+        
+        return resultCell
     }
 }
