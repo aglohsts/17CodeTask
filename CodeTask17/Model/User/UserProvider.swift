@@ -26,7 +26,7 @@ enum SearchType {
     case user(Int)
 }
 
-typealias UserHandler = (Result<UserObject, Error>) -> Void
+typealias UserHandler = (Result<(UserObject, String?, String?), Error>) -> Void
 
 class UserProvider {
     
@@ -34,9 +34,9 @@ class UserProvider {
     
     let session = URLSession.shared
     
-    func getUser(completion: @escaping UserHandler) {
+    func getUser(searchKeyWord: String, completion: @escaping UserHandler) {
         
-        let endPoint = "/search/users?q=tom&page=2"
+        let endPoint = "/search/users?q=\(searchKeyWord)&page=1"
         
         let urlString = Bundle.CTValueForString(key: CTConstant.urlKey) + endPoint
         
@@ -65,9 +65,9 @@ class UserProvider {
                     
                     do {
                         
-                        let userObject = try strongSelf.decoder.decode(UserObject.self, from: data)
+                        let json = try JSONSerialization.jsonObject(with: data, options: [.allowFragments])
                         
-                        completion(.success(userObject))
+                        let userObject = try strongSelf.decoder.decode(UserObject.self, from: data)
                         
                         if let linkHeader = httpResponse.allHeaderFields["Link"] as? String {
                             
@@ -86,28 +86,24 @@ class UserProvider {
                                 dictionary[components[1]] = cleanPath
                             })
                             
-                            if let nextPagePath = dictionary["rel=\"next\""] {
-                                
-                                print("next: \(nextPagePath)")
-                            }
+//                            let prevPagePath = dictionary["rel=\"prev\""],
+//                            let firstPagePath = dictionary["rel=\"first\""],
                             
-                            if let prevPagePath = dictionary["rel=\"prev\""] {
-                                
-                                print("prev: \(prevPagePath)")
-                            }
+//                            guard let lastPagePath = dictionary["rel=\"last\""] else { return }
+//                            
+//                            if let nextPagePath = dictionary["rel=\"next\""] {
+//                                
+//                                completion(.success((userObject, nextPagePath, lastPagePath)))
+//                            } else {
+//                                
+//                                completion(.success((userObject, nil, lastPagePath)))
+//                            }
                             
-                            if let firstPagePath = dictionary["rel=\"first\""] {
-                                
-                                print("first: \(firstPagePath)")
-                            }
+                            print(dictionary["rel=\"next\""])
                             
-                            if let lastPagePath = dictionary["rel=\"last\""] {
-                                
-                                print("last: \(lastPagePath)")
-                            }
+                            print(dictionary["rel=\"last\""])
                             
-                            
-                            
+                            completion(.success((userObject, dictionary["rel=\"next\""], dictionary["rel=\"last\""])))
                         }
                         
                     } catch {
@@ -126,9 +122,10 @@ class UserProvider {
         })
         
         task.resume()
+    }
+    
+    func getMoreUser(completion: @escaping UserHandler) {
         
-//        let task = session.dataTask(with: url, completionHandler: { (data, response, error) in
-//            <#code#>
-//        })
+
     }
 }

@@ -18,6 +18,10 @@ class LobbyViewController: CTBaseViewController {
     
     @IBOutlet weak var resultContainerView: UIView!
     
+    @objc dynamic var inputText: String?
+    
+    var textFieldObservationToken: NSKeyValueObservation?
+    
     var isSearching: Bool = false {
         
         didSet {
@@ -38,29 +42,68 @@ class LobbyViewController: CTBaseViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        searchButton.isUserInteractionEnabled = false
+        
+        textFieldKVO()
     }
-
+    
+    @IBAction func textFieldValueDidChange(_ sender: Any) {
+        
+        inputText = searchTextField.text
+    }
+    
     @IBAction func onSearch(_ sender: Any) {
         
-        getUser()
+        if let inputText = inputText {
+            
+            getUser(searchKeyWord: inputText)
+        }
     }
     
     @IBAction func onCancel(_ sender: Any) {
+        
+        searchTextField.text = ""
     }
     
-    func getUser() {
+    func getUser(searchKeyWord: String) {
         
-        userProvider.getUser(completion: { [weak self] (result) in
+        userProvider.getUser(searchKeyWord: searchKeyWord, completion: { [weak self] (result) in
             
             switch result {
                 
-            case .success(let userObject):
+            case .success(let (userObject, nextPagePath, lastPagePath)):
                 
                 print(userObject)
+                
+                print(nextPagePath)
+                
+                print(lastPagePath)
                 
             case .failure(let error):
                 
                 print(error.localizedDescription)
+            }
+        })
+    }
+    
+    func textFieldKVO() {
+        
+        if textFieldObservationToken != nil {
+            
+            return
+        }
+
+        textFieldObservationToken = observe(\.inputText, options: [.new], changeHandler: { [weak self] (strongSelf, change) in
+            
+            if let searchKeyWord = change.newValue {
+                
+                if searchKeyWord == "" || searchKeyWord == nil {
+                    
+                    strongSelf.searchButton.isUserInteractionEnabled = false
+                } else {
+                    
+                    strongSelf.searchButton.isUserInteractionEnabled = true
+                }
             }
         })
     }
