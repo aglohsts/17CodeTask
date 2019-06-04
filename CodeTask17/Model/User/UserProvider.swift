@@ -21,6 +21,11 @@ enum NetworkError: Error {
     case unexpetedError
 }
 
+enum SearchType {
+    
+    case user(Int)
+}
+
 typealias UserHandler = (Result<UserObject, Error>) -> Void
 
 class UserProvider {
@@ -31,7 +36,7 @@ class UserProvider {
     
     func getUser(completion: @escaping UserHandler) {
         
-        let endPoint = "/search/users?q=tom"
+        let endPoint = "/search/users?q=tom&page=2"
         
         let urlString = Bundle.CTValueForString(key: CTConstant.urlKey) + endPoint
         
@@ -63,6 +68,47 @@ class UserProvider {
                         let userObject = try strongSelf.decoder.decode(UserObject.self, from: data)
                         
                         completion(.success(userObject))
+                        
+                        if let linkHeader = httpResponse.allHeaderFields["Link"] as? String {
+                            
+                            let links = linkHeader.components(separatedBy: ", ")
+                            
+                            print(links)
+                            
+                            var dictionary: [String: String] = [:]
+                            
+                            links.forEach({
+                                
+                                let components = $0.components(separatedBy: "; ")
+                                
+                                let cleanPath = components[0].trimmingCharacters(in: CharacterSet(charactersIn: "<>"))
+                                
+                                dictionary[components[1]] = cleanPath
+                            })
+                            
+                            if let nextPagePath = dictionary["rel=\"next\""] {
+                                
+                                print("next: \(nextPagePath)")
+                            }
+                            
+                            if let prevPagePath = dictionary["rel=\"prev\""] {
+                                
+                                print("prev: \(prevPagePath)")
+                            }
+                            
+                            if let firstPagePath = dictionary["rel=\"first\""] {
+                                
+                                print("first: \(firstPagePath)")
+                            }
+                            
+                            if let lastPagePath = dictionary["rel=\"last\""] {
+                                
+                                print("last: \(lastPagePath)")
+                            }
+                            
+                            
+                            
+                        }
                         
                     } catch {
                         

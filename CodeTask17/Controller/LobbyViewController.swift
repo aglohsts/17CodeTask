@@ -38,6 +38,18 @@ class LobbyViewController: CTBaseViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
+    }
+
+    @IBAction func onSearch(_ sender: Any) {
+        
+        getUser()
+    }
+    
+    @IBAction func onCancel(_ sender: Any) {
+    }
+    
+    func getUser() {
+        
         userProvider.getUser(completion: { [weak self] (result) in
             
             switch result {
@@ -51,12 +63,6 @@ class LobbyViewController: CTBaseViewController {
                 print(error.localizedDescription)
             }
         })
-    }
-
-    @IBAction func onSearch(_ sender: Any) {
-    }
-    
-    @IBAction func onCancel(_ sender: Any) {
     }
     
 }
