@@ -81,6 +81,10 @@ class LobbyViewController: CTBaseViewController {
         
         inputText = ""
         
+        resultVC?.userItems = []
+        
+        resultVCReloadData()
+        
         isSearching = false
     }
     
@@ -105,6 +109,8 @@ class LobbyViewController: CTBaseViewController {
                 self?.userObject = userObject
                 
                 self?.resultVC?.userItems = userObject.items
+                
+                self?.resultVCReloadData()
                 
                 print(nextPagePath)
                 
@@ -137,6 +143,14 @@ class LobbyViewController: CTBaseViewController {
                 }
             }
         })
+    }
+    
+    func resultVCReloadData() {
+        
+        DispatchQueue.main.async { [weak self] in
+            
+            self?.resultVC?.collectionView.reloadData()
+        }
     }
 }
 

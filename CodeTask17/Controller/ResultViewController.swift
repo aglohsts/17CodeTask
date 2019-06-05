@@ -20,16 +20,7 @@ class ResultViewController: CTBaseViewController {
         }
     }
     
-    var userItems: [UserItem] = [] {
-        
-        didSet {
-            
-            DispatchQueue.main.async { [weak self] in
-                
-                self?.collectionView.reloadData()
-            }
-        }
-    }
+    var userItems: [UserItem] = []
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -38,6 +29,20 @@ class ResultViewController: CTBaseViewController {
 
 extension ResultViewController: UICollectionViewDelegateFlowLayout {
     
+    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
+        
+        return CGSize(width: UIScreen.main.bounds.width / 3, height: UIScreen.main.bounds.width / 3 * 144 / 121)
+    }
+    
+    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, minimumLineSpacingForSectionAt section: Int) -> CGFloat {
+        
+        return 15
+    }
+    
+    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, minimumInteritemSpacingForSectionAt section: Int) -> CGFloat {
+        
+        return 0
+    }
 }
 
 extension ResultViewController: UICollectionViewDelegate {

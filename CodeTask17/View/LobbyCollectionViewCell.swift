@@ -15,10 +15,13 @@ class ResultCollectionViewCell: UICollectionViewCell {
     @IBOutlet weak var nameLabel: UILabel!
     
     override func awakeFromNib() {
+        
         super.awakeFromNib()
     }
     
     func layoutCell(imageUrl: String, userName: String) {
+        
+        imageView.isRoundedImage()
         
         imageView.loadImage(imageUrl, placeHolder: UIImage())
         

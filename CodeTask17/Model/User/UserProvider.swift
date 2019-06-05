@@ -34,6 +34,10 @@ class UserProvider {
     
     let session = URLSession.shared
     
+    var nextPagePath: String? = nil
+    
+    var lastPagePath: String? = nil
+    
     func getUser(searchKeyWord: String, completion: @escaping UserHandler) {
         
         var urlComponents = NSURLComponents(
@@ -69,7 +73,7 @@ class UserProvider {
                     
                     do {
                         
-                        let json = try JSONSerialization.jsonObject(with: data, options: [.allowFragments])
+//                        let json = try JSONSerialization.jsonObject(with: data, options: [.allowFragments])
                         
                         let userObject = try strongSelf.decoder.decode(UserObject.self, from: data)
                         
@@ -77,46 +81,29 @@ class UserProvider {
                         
                         print(userObject.totalCount)
                         
-                        if userObject.totalCount == 1 {
+                        if let linkHeader = httpResponse.allHeaderFields["Link"] as? String {
                             
-                            completion(.success((userObject, nil, nil)))
+                            let links = linkHeader.components(separatedBy: ", ")
                             
-                        } else {
+                            print(links)
                             
-                            if let linkHeader = httpResponse.allHeaderFields["Link"] as? String {
+                            var dictionary: [String: String] = [:]
+                            
+                            links.forEach({
                                 
-                                let links = linkHeader.components(separatedBy: ", ")
+                                let components = $0.components(separatedBy: "; ")
                                 
-                                print(links)
+                                let cleanPath = components[0].trimmingCharacters(in: CharacterSet(charactersIn: "<>"))
                                 
-                                var dictionary: [String: String] = [:]
-                                
-                                links.forEach({
-                                    
-                                    let components = $0.components(separatedBy: "; ")
-                                    
-                                    let cleanPath = components[0].trimmingCharacters(in: CharacterSet(charactersIn: "<>"))
-                                    
-                                    dictionary[components[1]] = cleanPath
-                                })
-                                
-                                completion(.success((userObject, dictionary["rel=\"next\""], dictionary["rel=\"last\""])))
+                                dictionary[components[1]] = cleanPath
+                            })
+                            
+                            self?.nextPagePath = dictionary["rel=\"next\""]
+                            
+                            self?.lastPagePath = dictionary["rel=\"last\""]
                         }
-                            
-//                            let prevPagePath = dictionary["rel=\"prev\""],
-//                            let firstPagePath = dictionary["rel=\"first\""],
-                            
-//                            guard let lastPagePath = dictionary["rel=\"last\""] else { return }
-//                            
-//                            if let nextPagePath = dictionary["rel=\"next\""] {
-//                                
-//                                completion(.success((userObject, nextPagePath, lastPagePath)))
-//                            } else {
-//                                
-//                                completion(.success((userObject, nil, lastPagePath)))
-//                            }
-                            
-                        }
+                        
+                        completion(.success((userObject, self?.nextPagePath, self?.lastPagePath)))
                         
                     } catch {
                         
@@ -136,8 +123,74 @@ class UserProvider {
         task.resume()
     }
     
-    func getMoreUser(completion: @escaping UserHandler) {
+    func getMoreUser(nextPageUrl: String, completion: @escaping UserHandler) {
         
-
+        guard let url = URL(string: nextPageUrl) else {
+            
+            completion(.failure(NetworkError.badURL))
+            
+            return
+        }
+        
+        let request = URLRequest(url: url)
+        
+        let task = session.dataTask(with: request, completionHandler: { [weak self] (data, response, error) in
+            
+            guard let strongSelf = self else { return }
+            
+            if let data = data {
+                
+                guard let httpResponse = response as? HTTPURLResponse else { return }
+                
+                let statusCode = httpResponse.statusCode
+                
+                switch statusCode {
+                    
+                case 200 ..< 300:
+                    
+                    do {
+                        
+//                        let json = try JSONSerialization.jsonObject(with: data, options: [.allowFragments])
+                        
+                        let userObject = try strongSelf.decoder.decode(UserObject.self, from: data)
+                        
+                        if let linkHeader = httpResponse.allHeaderFields["Link"] as? String {
+                            
+                            let links = linkHeader.components(separatedBy: ", ")
+                            
+                            var dictionary: [String: String] = [:]
+                            
+                            links.forEach({
+                                
+                                let components = $0.components(separatedBy: "; ")
+                                
+                                let cleanPath = components[0].trimmingCharacters(in: CharacterSet(charactersIn: "<>"))
+                                
+                                dictionary[components[1]] = cleanPath
+                            })
+                            
+                            self?.nextPagePath = dictionary["rel=\"next\""]
+                            
+                            self?.lastPagePath = dictionary["rel=\"last\""]
+                        }
+                        
+                        completion(.success((userObject, self?.nextPagePath, self?.lastPagePath)))
+                        
+                    } catch {
+                        
+                        completion(.failure(error))
+                    }
+                    
+                case 400 ..< 500: completion(.failure(NetworkError.clientError(data)))
+                    
+                case 500 ..< 600: completion(.failure(NetworkError.serverError))
+                    
+                default: completion(.failure(NetworkError.unexpetedError))
+                }
+            }
+            
+        })
+        
+        task.resume()
     }
 }

@@ -33,6 +33,7 @@
                                 <subviews>
                                     <textField opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="249" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="9aL-Pi-fCe">
                                         <rect key="frame" x="12" y="58" width="278" height="30"/>
+                                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         <constraints>
                                             <constraint firstAttribute="height" constant="30" id="64M-vr-oms"/>
                                         </constraints>
@@ -44,8 +45,8 @@
                                         </connections>
                                     </textField>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Please enter keyword to search users." textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="cMV-aG-Ac0">
-                                        <rect key="frame" x="60" y="22" width="260" height="18"/>
-                                        <fontDescription key="fontDescription" type="system" pointSize="15"/>
+                                        <rect key="frame" x="60" y="22.5" width="245.5" height="17"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                         <nil key="textColor"/>
                                         <nil key="highlightedColor"/>
                                     </label>
@@ -71,7 +72,7 @@
                                         </connections>
                                     </button>
                                 </subviews>
-                                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <color key="backgroundColor" red="0.97254901959999995" green="0.97254901959999995" blue="0.97254901959999995" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <constraints>
                                     <constraint firstAttribute="trailing" secondItem="WMi-1p-Cgz" secondAttribute="trailing" constant="12" id="DCc-LO-GNk"/>
                                     <constraint firstItem="9aL-Pi-fCe" firstAttribute="top" secondItem="aas-Vc-8yX" secondAttribute="bottom" constant="12" id="Dnv-HY-i5w"/>
@@ -87,17 +88,25 @@
                                     <constraint firstItem="cMV-aG-Ac0" firstAttribute="leading" secondItem="aas-Vc-8yX" secondAttribute="trailing" constant="8" id="vCi-BA-h2Q"/>
                                 </constraints>
                             </view>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="DsR-BI-W4l">
+                                <rect key="frame" x="0.0" y="0.0" width="414" height="44"/>
+                                <color key="backgroundColor" red="0.97254901959999995" green="0.97254901959999995" blue="0.97254901959999995" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                            </view>
                         </subviews>
                         <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <constraints>
                             <constraint firstItem="EVh-ij-ySX" firstAttribute="top" secondItem="XYL-40-cU9" secondAttribute="bottom" id="0ID-TA-0a0"/>
+                            <constraint firstItem="DsR-BI-W4l" firstAttribute="top" secondItem="8bC-Xf-vdC" secondAttribute="top" id="1MR-KI-peb"/>
                             <constraint firstItem="EVh-ij-ySX" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" id="5WV-HI-NDd"/>
                             <constraint firstItem="6Tk-OE-BBY" firstAttribute="bottom" secondItem="EVh-ij-ySX" secondAttribute="bottom" id="81B-0Y-xDZ"/>
                             <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="Y3u-AZ-s3j" secondAttribute="trailing" id="9Fw-Qz-5hb"/>
                             <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="XYL-40-cU9" secondAttribute="trailing" id="9Q1-cN-Ar7"/>
                             <constraint firstItem="Y3u-AZ-s3j" firstAttribute="top" secondItem="XYL-40-cU9" secondAttribute="bottom" id="Njf-C0-PWU"/>
+                            <constraint firstItem="XYL-40-cU9" firstAttribute="top" secondItem="DsR-BI-W4l" secondAttribute="bottom" id="WOq-GJ-jZO"/>
+                            <constraint firstAttribute="trailing" secondItem="DsR-BI-W4l" secondAttribute="trailing" id="btL-Io-vfd"/>
                             <constraint firstItem="6Tk-OE-BBY" firstAttribute="bottom" secondItem="Y3u-AZ-s3j" secondAttribute="bottom" id="cm3-QK-N0I"/>
                             <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="EVh-ij-ySX" secondAttribute="trailing" id="fAp-Vr-1nN"/>
+                            <constraint firstItem="DsR-BI-W4l" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leading" id="j0o-cB-GAZ"/>
                             <constraint firstItem="XYL-40-cU9" firstAttribute="top" secondItem="6Tk-OE-BBY" secondAttribute="top" id="mHC-d7-nR9"/>
                             <constraint firstItem="XYL-40-cU9" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" id="xGk-xD-GT7"/>
                             <constraint firstItem="Y3u-AZ-s3j" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" id="yAq-Or-c6V"/>
@@ -125,6 +134,7 @@
                         <subviews>
                             <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="DGB-mu-rLT">
                                 <rect key="frame" x="0.0" y="0.0" width="414" height="718"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <collectionViewFlowLayout key="collectionViewLayout" minimumLineSpacing="10" minimumInteritemSpacing="10" id="r53-Wa-8m9">
                                     <size key="itemSize" width="121" height="144"/>
                                     <size key="headerReferenceSize" width="0.0" height="0.0"/>
@@ -146,8 +156,8 @@
                                                     </constraints>
                                                 </imageView>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="drD-3c-PfJ">
-                                                    <rect key="frame" x="43" y="105" width="35.5" height="17"/>
-                                                    <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                                    <rect key="frame" x="44" y="105" width="33" height="16"/>
+                                                    <fontDescription key="fontDescription" type="system" pointSize="13"/>
                                                     <nil key="textColor"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
