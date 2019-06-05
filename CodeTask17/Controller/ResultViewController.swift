@@ -8,6 +8,11 @@
 
 import UIKit
 
+protocol passUserDelegate: AnyObject {
+    
+    func passUser(viewController: UIViewController, userItem: [UserItem])
+}
+
 class ResultViewController: CTBaseViewController {
 
     @IBOutlet weak var collectionView: UICollectionView! {

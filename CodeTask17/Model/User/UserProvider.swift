@@ -21,9 +21,9 @@ enum NetworkError: Error {
     case unexpetedError
 }
 
-enum SearchType {
+enum EndPoint: String {
     
-    case user(Int)
+    case user = "/search/users"
 }
 
 typealias UserHandler = (Result<(UserObject, String?, String?), Error>) -> Void
@@ -36,11 +36,15 @@ class UserProvider {
     
     func getUser(searchKeyWord: String, completion: @escaping UserHandler) {
         
-        let endPoint = "/search/users?q=\(searchKeyWord)&page=1"
+        var urlComponents = NSURLComponents(
+            string: Bundle.CTValueForString(key: CTConstant.urlKey) + EndPoint.user.rawValue)!
         
-        let urlString = Bundle.CTValueForString(key: CTConstant.urlKey) + endPoint
-        
-        guard let url = URL(string: urlString) else {
+        urlComponents.queryItems = [
+            NSURLQueryItem(name: "q", value: searchKeyWord),
+            NSURLQueryItem(name: "page", value: "1")
+            ] as [URLQueryItem]
+
+        guard let url = urlComponents.url else {
             
             completion(.failure(NetworkError.badURL))
             
@@ -73,22 +77,31 @@ class UserProvider {
                         
                         print(userObject.totalCount)
                         
-                        if let linkHeader = httpResponse.allHeaderFields["Link"] as? String {
+                        if userObject.totalCount == 1 {
                             
-                            let links = linkHeader.components(separatedBy: ", ")
+                            completion(.success((userObject, nil, nil)))
                             
-                            print(links)
+                        } else {
                             
-                            var dictionary: [String: String] = [:]
-                            
-                            links.forEach({
+                            if let linkHeader = httpResponse.allHeaderFields["Link"] as? String {
                                 
-                                let components = $0.components(separatedBy: "; ")
+                                let links = linkHeader.components(separatedBy: ", ")
                                 
-                                let cleanPath = components[0].trimmingCharacters(in: CharacterSet(charactersIn: "<>"))
+                                print(links)
                                 
-                                dictionary[components[1]] = cleanPath
-                            })
+                                var dictionary: [String: String] = [:]
+                                
+                                links.forEach({
+                                    
+                                    let components = $0.components(separatedBy: "; ")
+                                    
+                                    let cleanPath = components[0].trimmingCharacters(in: CharacterSet(charactersIn: "<>"))
+                                    
+                                    dictionary[components[1]] = cleanPath
+                                })
+                                
+                                completion(.success((userObject, dictionary["rel=\"next\""], dictionary["rel=\"last\""])))
+                        }
                             
 //                            let prevPagePath = dictionary["rel=\"prev\""],
 //                            let firstPagePath = dictionary["rel=\"first\""],
@@ -103,11 +116,6 @@ class UserProvider {
 //                                completion(.success((userObject, nil, lastPagePath)))
 //                            }
                             
-                            print(dictionary["rel=\"next\""])
-                            
-                            print(dictionary["rel=\"last\""])
-                            
-                            completion(.success((userObject, nil, nil)))
                         }
                         
                     } catch {

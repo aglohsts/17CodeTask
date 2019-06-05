@@ -23,6 +23,10 @@ class LobbyViewController: CTBaseViewController {
     
     @IBOutlet weak var resultContainerView: UIView!
     
+    weak var delegate = passUserDelegate?
+    
+    var resultVC: ResultViewController = ResultViewController()
+    
     @objc dynamic var inputText: String?
     
     var userObject: UserObject?
@@ -79,10 +83,9 @@ class LobbyViewController: CTBaseViewController {
         
         if segue.identifier == Segue.result {
             
-            guard let resultVC = segue.destination as? ResultViewController,
-                  let userObject = userObject else { return }
-            
-            
+            guard resultVC == segue.destination as? ResultViewController,
+                let userObject = userObject else { return }
+                        
             resultVC.userItems = userObject.items
         }
     }
@@ -98,8 +101,6 @@ class LobbyViewController: CTBaseViewController {
                 print(userObject)
                 
                 self?.userObject = userObject
-                
-//                self?.performSegue(withIdentifier: Segue.result, sender: nil)
                 
                 print(nextPagePath)
                 
