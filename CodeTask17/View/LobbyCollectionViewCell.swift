@@ -23,7 +23,7 @@ class ResultCollectionViewCell: UICollectionViewCell {
         
         imageView.isRoundedImage()
         
-        imageView.loadImage(imageUrl, placeHolder: UIImage())
+        imageView.loadImage(imageUrl, placeHolder: UIImage.asset(.User))
         
         nameLabel.text = userName
     }

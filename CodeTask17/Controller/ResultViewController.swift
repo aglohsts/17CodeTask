@@ -20,6 +20,8 @@ class ResultViewController: CTBaseViewController {
         }
     }
     
+    var getMoreUserHandler: (() -> Void)?
+    
     var userItems: [UserItem] = []
     
     override func viewDidLoad() {
@@ -47,6 +49,18 @@ extension ResultViewController: UICollectionViewDelegateFlowLayout {
 
 extension ResultViewController: UICollectionViewDelegate {
     
+    func scrollViewDidEndDragging(_ scrollView: UIScrollView, willDecelerate decelerate: Bool) {
+        
+        if scrollView == collectionView {
+            
+            if scrollView.contentSize.height - scrollView.contentOffset.y < 1500 {
+                
+//                (scrollView.contentOffset.y + scrollView.frame.size.height) >= scrollView.contentSize.height 
+                
+                getMoreUserHandler?()
+            }
+        }
+    }
 }
 
 extension ResultViewController: UICollectionViewDataSource {

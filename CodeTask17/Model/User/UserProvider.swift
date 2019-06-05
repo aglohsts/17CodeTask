@@ -77,15 +77,9 @@ class UserProvider {
                         
                         let userObject = try strongSelf.decoder.decode(UserObject.self, from: data)
                         
-                        print(userObject)
-                        
-                        print(userObject.totalCount)
-                        
                         if let linkHeader = httpResponse.allHeaderFields["Link"] as? String {
                             
                             let links = linkHeader.components(separatedBy: ", ")
-                            
-                            print(links)
                             
                             var dictionary: [String: String] = [:]
                             

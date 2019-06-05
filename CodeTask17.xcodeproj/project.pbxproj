@@ -9,6 +9,7 @@
 /* Begin PBXBuildFile section */
 		63E5DA1AF66C1FEC5E8898B6 /* Pods_CodeTask17.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D0FC33726D2988F457BEF520 /* Pods_CodeTask17.framework */; };
 		CA477FA222A791B000F06C1B /* UIImageView+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA477FA122A791B000F06C1B /* UIImageView+Extension.swift */; };
+		CA477FA422A7B64E00F06C1B /* UIImage+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA477FA322A7B64E00F06C1B /* UIImage+Extension.swift */; };
 		CA4CC86C22A4B75B004F0C33 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA4CC86B22A4B75B004F0C33 /* AppDelegate.swift */; };
 		CA4CC86E22A4B75B004F0C33 /* LobbyViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA4CC86D22A4B75B004F0C33 /* LobbyViewController.swift */; };
 		CA4CC87322A4B765004F0C33 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = CA4CC87222A4B765004F0C33 /* Assets.xcassets */; };
@@ -28,6 +29,7 @@
 /* Begin PBXFileReference section */
 		85A134A61FC7AF0E189EB139 /* Pods-CodeTask17.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-CodeTask17.release.xcconfig"; path = "Target Support Files/Pods-CodeTask17/Pods-CodeTask17.release.xcconfig"; sourceTree = "<group>"; };
 		CA477FA122A791B000F06C1B /* UIImageView+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIImageView+Extension.swift"; sourceTree = "<group>"; };
+		CA477FA322A7B64E00F06C1B /* UIImage+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIImage+Extension.swift"; sourceTree = "<group>"; };
 		CA4CC86822A4B75B004F0C33 /* CodeTask17.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = CodeTask17.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		CA4CC86B22A4B75B004F0C33 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		CA4CC86D22A4B75B004F0C33 /* LobbyViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LobbyViewController.swift; sourceTree = "<group>"; };
@@ -152,6 +154,7 @@
 				CA4CC88722A4CA0B004F0C33 /* UICollectionView+Extension.swift */,
 				CA4CC89422A4FC0B004F0C33 /* Bundle+Extension.swift */,
 				CA477FA122A791B000F06C1B /* UIImageView+Extension.swift */,
+				CA477FA322A7B64E00F06C1B /* UIImage+Extension.swift */,
 			);
 			path = Extension;
 			sourceTree = "<group>";
@@ -297,6 +300,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				CA477FA422A7B64E00F06C1B /* UIImage+Extension.swift in Sources */,
 				CA4CC86E22A4B75B004F0C33 /* LobbyViewController.swift in Sources */,
 				CA4CC89522A4FC0B004F0C33 /* Bundle+Extension.swift in Sources */,
 				CA4CC88822A4CA0B004F0C33 /* UICollectionView+Extension.swift in Sources */,

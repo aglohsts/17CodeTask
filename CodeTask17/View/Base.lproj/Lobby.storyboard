@@ -50,7 +50,7 @@
                                         <nil key="textColor"/>
                                         <nil key="highlightedColor"/>
                                     </label>
-                                    <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="github" translatesAutoresizingMaskIntoConstraints="NO" id="aas-Vc-8yX">
+                                    <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="GitHub" translatesAutoresizingMaskIntoConstraints="NO" id="aas-Vc-8yX">
                                         <rect key="frame" x="12" y="16" width="40" height="30"/>
                                         <constraints>
                                             <constraint firstAttribute="width" constant="40" id="UwH-Fa-joQ"/>
@@ -134,7 +134,7 @@
                         <subviews>
                             <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="DGB-mu-rLT">
                                 <rect key="frame" x="0.0" y="0.0" width="414" height="718"/>
-                                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <color key="backgroundColor" red="0.1647058824" green="0.63137254899999995" blue="0.68627450980000004" alpha="1" colorSpace="calibratedRGB"/>
                                 <collectionViewFlowLayout key="collectionViewLayout" minimumLineSpacing="10" minimumInteritemSpacing="10" id="r53-Wa-8m9">
                                     <size key="itemSize" width="121" height="144"/>
                                     <size key="headerReferenceSize" width="0.0" height="0.0"/>
@@ -199,6 +199,6 @@
         </scene>
     </scenes>
     <resources>
-        <image name="github" width="245" height="245"/>
+        <image name="GitHub" width="245" height="245"/>
     </resources>
 </document>

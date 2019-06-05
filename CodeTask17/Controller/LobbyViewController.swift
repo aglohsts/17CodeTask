@@ -23,6 +23,12 @@ class LobbyViewController: CTBaseViewController {
     
     @IBOutlet weak var resultContainerView: UIView!
     
+    var isFetching: Bool = false
+    
+    var nextPagePath: String? = nil
+    
+    var lastPagePath: String? = nil
+    
     var resultVC: ResultViewController?
     
     @objc dynamic var inputText: String?
@@ -93,18 +99,41 @@ class LobbyViewController: CTBaseViewController {
         if segue.identifier == Segue.result {
             
             resultVC = segue.destination as? ResultViewController
+            
+            resultVC?.getMoreUserHandler = { [weak self] in
+                
+                guard let nextPagePath = self?.nextPagePath, let lastPagePath = self?.lastPagePath else { return }
+                
+                print(nextPagePath)
+                
+                if nextPagePath == lastPagePath {
+                    
+                    print("next = last")
+                    
+                    return
+                    
+                } else {
+                    
+                    self?.getMoreUser(nextPageUrl: nextPagePath)
+                }
+            }
         }
     }
     
     func getUser(searchKeyWord: String) {
         
+        guard isFetching == false else {
+            
+            return
+        }
+        
         userProvider.getUser(searchKeyWord: searchKeyWord, completion: { [weak self] (result) in
+            
+            self?.isFetching = true
             
             switch result {
                 
             case .success(let (userObject, nextPagePath, lastPagePath)):
-                
-                print(userObject)
                 
                 self?.userObject = userObject
                 
@@ -112,15 +141,55 @@ class LobbyViewController: CTBaseViewController {
                 
                 self?.resultVCReloadData()
                 
-                print(nextPagePath)
+                self?.nextPagePath = nextPagePath
                 
-                print(lastPagePath)
+                self?.lastPagePath = lastPagePath
+                
+                self?.isFetching = false
                 
             case .failure(let error):
                 
                 print(error.localizedDescription)
+                
+                self?.isFetching = false
             }
         })
+    }
+    
+    func getMoreUser(nextPageUrl: String) {
+        
+        guard isFetching == false else {
+            
+            return
+        }
+        
+        userProvider.getMoreUser(nextPageUrl: nextPageUrl, completion: { [weak self] (result) in
+            
+            self?.isFetching = true
+            
+            switch result {
+                
+            case .success(let (userObject, nextPagePath, lastPagePath)):
+                
+                self?.resultVC?.userItems += userObject.items
+                
+//                self?.resultVCReloadData()
+                
+                self?.nextPagePath = nextPagePath
+                
+                self?.lastPagePath = lastPagePath
+                
+                self?.isFetching = false
+                
+            case .failure(let error):
+                
+                print(error.localizedDescription)
+                
+                self?.isFetching = false
+            }
+        })
+        
+        
     }
     
     func textFieldKVO() {
