@@ -8,11 +8,6 @@
 
 import UIKit
 
-protocol passUserDelegate: AnyObject {
-    
-    func passUser(viewController: UIViewController, userItem: [UserItem])
-}
-
 class ResultViewController: CTBaseViewController {
 
     @IBOutlet weak var collectionView: UICollectionView! {
@@ -25,7 +20,16 @@ class ResultViewController: CTBaseViewController {
         }
     }
     
-    var userItems: [UserItem] = []
+    var userItems: [UserItem] = [] {
+        
+        didSet {
+            
+            DispatchQueue.main.async { [weak self] in
+                
+                self?.collectionView.reloadData()
+            }
+        }
+    }
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -55,17 +59,14 @@ extension ResultViewController: UICollectionViewDataSource {
         )
         
         guard let resultCell = cell as? ResultCollectionViewCell else { return UICollectionViewCell() }
+            
+        resultCell.layoutCell(
+            imageUrl: userItems[indexPath.item].avatarUrl,
+            userName: userItems[indexPath.item].login)
         
-        if userItems.count > 0 {
+        DispatchQueue.main.async { [weak self] in
             
-            resultCell.layoutCell(
-                imageUrl: userItems[indexPath.item].avatarUrl,
-                userName: userItems[indexPath.item].login)
-            
-            DispatchQueue.main.async { [weak self] in
-                
-                self?.collectionView.reloadData()
-            }
+            self?.collectionView.reloadData()
         }
         
         return resultCell

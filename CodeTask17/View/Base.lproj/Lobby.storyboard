@@ -125,7 +125,6 @@
                         <subviews>
                             <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="DGB-mu-rLT">
                                 <rect key="frame" x="0.0" y="0.0" width="414" height="718"/>
-                                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <collectionViewFlowLayout key="collectionViewLayout" minimumLineSpacing="10" minimumInteritemSpacing="10" id="r53-Wa-8m9">
                                     <size key="itemSize" width="121" height="144"/>
                                     <size key="headerReferenceSize" width="0.0" height="0.0"/>
@@ -181,7 +180,7 @@
                         <viewLayoutGuide key="safeArea" id="DQU-UP-h3p"/>
                     </view>
                     <connections>
-                        <outlet property="collectionView" destination="DGB-mu-rLT" id="FLN-5A-JZX"/>
+                        <outlet property="collectionView" destination="DGB-mu-rLT" id="bam-gr-bQP"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="9Ax-6f-ka6" userLabel="First Responder" sceneMemberID="firstResponder"/>

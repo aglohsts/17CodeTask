@@ -23,9 +23,7 @@ class LobbyViewController: CTBaseViewController {
     
     @IBOutlet weak var resultContainerView: UIView!
     
-    weak var delegate = passUserDelegate?
-    
-    var resultVC: ResultViewController = ResultViewController()
+    var resultVC: ResultViewController?
     
     @objc dynamic var inputText: String?
     
@@ -68,25 +66,29 @@ class LobbyViewController: CTBaseViewController {
         if let inputText = inputText {
             
             getUser(searchKeyWord: inputText)
+            
+            isSearching = true
+            
+        } else {
+            
+            isSearching = false
         }
-        
     }
     
     @IBAction func onCancel(_ sender: Any) {
         
         searchTextField.text = ""
         
+        inputText = ""
         
+        isSearching = false
     }
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         
         if segue.identifier == Segue.result {
             
-            guard resultVC == segue.destination as? ResultViewController,
-                let userObject = userObject else { return }
-                        
-            resultVC.userItems = userObject.items
+            resultVC = segue.destination as? ResultViewController
         }
     }
     
@@ -101,6 +103,8 @@ class LobbyViewController: CTBaseViewController {
                 print(userObject)
                 
                 self?.userObject = userObject
+                
+                self?.resultVC?.userItems = userObject.items
                 
                 print(nextPagePath)
                 
@@ -134,6 +138,5 @@ class LobbyViewController: CTBaseViewController {
             }
         })
     }
-    
 }
 
