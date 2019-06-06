@@ -10,6 +10,22 @@ import UIKit
 
 class ResultViewController: CTBaseViewController {
 
+    @IBOutlet weak var resultLabel: UILabel! {
+        
+        didSet {
+            
+            resultLabel.text = ""
+        }
+    }
+    
+    @IBOutlet weak var noteLabel: UILabel! {
+        
+        didSet {
+            
+            noteLabel.text = ""
+        }
+    }
+    
     @IBOutlet weak var collectionView: UICollectionView! {
         
         didSet {
@@ -20,7 +36,7 @@ class ResultViewController: CTBaseViewController {
         }
     }
     
-    var getMoreUserHandler: (() -> Void)?
+    @objc var getMoreUserHandler: (() -> Void)?
     
     var userItems: [UserItem] = []
     
@@ -53,9 +69,7 @@ extension ResultViewController: UICollectionViewDelegate {
         
         if scrollView == collectionView {
             
-            if scrollView.contentSize.height - scrollView.contentOffset.y < 1500 {
-                
-//                (scrollView.contentOffset.y + scrollView.frame.size.height) >= scrollView.contentSize.height 
+            if (scrollView.contentOffset.y + scrollView.frame.size.height - scrollView.contentSize.height) < UIScreen.main.bounds.height * 5 / 6 {
                 
                 getMoreUserHandler?()
             }

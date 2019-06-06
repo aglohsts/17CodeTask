@@ -147,7 +147,7 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="DGB-mu-rLT">
-                                <rect key="frame" x="0.0" y="0.0" width="414" height="718"/>
+                                <rect key="frame" x="0.0" y="60" width="414" height="658"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <collectionViewFlowLayout key="collectionViewLayout" minimumLineSpacing="10" minimumInteritemSpacing="10" id="r53-Wa-8m9">
                                     <size key="itemSize" width="121" height="144"/>
@@ -193,18 +193,57 @@
                                     </collectionViewCell>
                                 </cells>
                             </collectionView>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="ee1-0A-ip9">
+                                <rect key="frame" x="0.0" y="0.0" width="414" height="60"/>
+                                <subviews>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="____ Result(s)." textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="5T5-p8-Esc">
+                                        <rect key="frame" x="12" y="8" width="392" height="17"/>
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="17" id="pZI-UT-ACO"/>
+                                        </constraints>
+                                        <fontDescription key="fontDescription" type="system" pointSize="13"/>
+                                        <nil key="textColor"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Error Note" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Gsy-9q-YBT">
+                                        <rect key="frame" x="12" y="29" width="392" height="17"/>
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="17" id="ae2-Mh-A3q"/>
+                                        </constraints>
+                                        <fontDescription key="fontDescription" type="system" pointSize="13"/>
+                                        <color key="textColor" red="0.3921568627" green="0.3921568627" blue="0.3921568627" alpha="1" colorSpace="calibratedRGB"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                </subviews>
+                                <color key="backgroundColor" red="0.97254901959999995" green="0.97254901959999995" blue="0.97254901959999995" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <constraints>
+                                    <constraint firstItem="Gsy-9q-YBT" firstAttribute="leading" secondItem="5T5-p8-Esc" secondAttribute="leading" id="GnR-ZT-M78"/>
+                                    <constraint firstAttribute="height" constant="60" id="ViA-Jk-84p"/>
+                                    <constraint firstItem="5T5-p8-Esc" firstAttribute="top" secondItem="ee1-0A-ip9" secondAttribute="top" constant="8" id="XjZ-j2-LHW"/>
+                                    <constraint firstAttribute="trailing" secondItem="5T5-p8-Esc" secondAttribute="trailing" constant="10" id="k4S-0R-jrI"/>
+                                    <constraint firstAttribute="bottom" relation="greaterThanOrEqual" secondItem="Gsy-9q-YBT" secondAttribute="bottom" constant="8" id="mEd-t9-LP5"/>
+                                    <constraint firstItem="5T5-p8-Esc" firstAttribute="leading" secondItem="ee1-0A-ip9" secondAttribute="leading" constant="12" id="uKI-34-vMp"/>
+                                    <constraint firstItem="Gsy-9q-YBT" firstAttribute="top" secondItem="5T5-p8-Esc" secondAttribute="bottom" constant="4" id="ukT-Od-7W6"/>
+                                    <constraint firstAttribute="trailing" secondItem="Gsy-9q-YBT" secondAttribute="trailing" constant="10" id="w7m-3B-qRZ"/>
+                                </constraints>
+                            </view>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <constraints>
                             <constraint firstAttribute="trailing" secondItem="DGB-mu-rLT" secondAttribute="trailing" id="ZL5-3E-epw"/>
-                            <constraint firstItem="DGB-mu-rLT" firstAttribute="top" secondItem="QhE-5M-2os" secondAttribute="top" id="dEd-in-EVB"/>
                             <constraint firstAttribute="bottom" secondItem="DGB-mu-rLT" secondAttribute="bottom" id="fyO-qE-a6h"/>
+                            <constraint firstItem="DGB-mu-rLT" firstAttribute="top" secondItem="ee1-0A-ip9" secondAttribute="bottom" id="j4v-CD-403"/>
+                            <constraint firstItem="ee1-0A-ip9" firstAttribute="top" secondItem="QhE-5M-2os" secondAttribute="top" id="nrA-3M-HKU"/>
                             <constraint firstItem="DGB-mu-rLT" firstAttribute="leading" secondItem="QhE-5M-2os" secondAttribute="leading" id="qOa-1o-ckm"/>
+                            <constraint firstItem="ee1-0A-ip9" firstAttribute="leading" secondItem="QhE-5M-2os" secondAttribute="leading" id="x62-gV-AsP"/>
+                            <constraint firstItem="DQU-UP-h3p" firstAttribute="trailing" secondItem="ee1-0A-ip9" secondAttribute="trailing" id="zzJ-pL-Y1L"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="DQU-UP-h3p"/>
                     </view>
                     <connections>
                         <outlet property="collectionView" destination="DGB-mu-rLT" id="bam-gr-bQP"/>
+                        <outlet property="noteLabel" destination="Gsy-9q-YBT" id="9Li-qT-KsC"/>
+                        <outlet property="resultLabel" destination="5T5-p8-Esc" id="j2n-K9-lXi"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="9Ax-6f-ka6" userLabel="First Responder" sceneMemberID="firstResponder"/>

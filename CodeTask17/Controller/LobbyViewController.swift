@@ -95,6 +95,10 @@ class LobbyViewController: CTBaseViewController {
         
         resultVC?.userItems = []
         
+        resultVC?.noteLabel.text = ""
+        
+        resultVC?.resultLabel.text = ""
+        
         resultVCReloadData()
         
         isSearching = false
@@ -114,7 +118,10 @@ class LobbyViewController: CTBaseViewController {
                 
                 if nextPagePath == lastPagePath {
                     
-                    print("next = last")
+                    DispatchQueue.main.async { [weak self] in
+                        
+                        self?.resultVC?.noteLabel.text = "Finish Searching."
+                    }
                     
                     return
                     
@@ -145,6 +152,25 @@ class LobbyViewController: CTBaseViewController {
                 
                 self?.resultVC?.userItems = userObject.items
                 
+                if userObject.totalCount > 1000 {
+                    
+                    DispatchQueue.main.async { [weak self] in
+                        
+                        self?.resultVC?.resultLabel.text = "\(userObject.totalCount) Results. (Showing first 1000 results.)"
+                        
+                        self?.resultVC?.noteLabel.text = ""
+                    }
+                    
+                } else {
+                    
+                    DispatchQueue.main.async { [weak self] in
+                        
+                        self?.resultVC?.resultLabel.text = "\(userObject.totalCount) Result(s)."
+                        
+                        self?.resultVC?.noteLabel.text = ""
+                    }
+                }
+                
                 self?.resultVCReloadData()
                 
                 self?.nextPagePath = nextPagePath
@@ -155,7 +181,10 @@ class LobbyViewController: CTBaseViewController {
                 
             case .failure(let error):
                 
-                print(error.localizedDescription)
+                DispatchQueue.main.async { [weak self] in
+                    
+                    self?.resultVC?.noteLabel.text = "Error: \(error.localizedDescription)"
+                }
                 
                 self?.isFetching = false
             }
@@ -179,8 +208,6 @@ class LobbyViewController: CTBaseViewController {
                 
                 self?.resultVC?.userItems += userObject.items
                 
-//                self?.resultVCReloadData()
-                
                 self?.nextPagePath = nextPagePath
                 
                 self?.lastPagePath = lastPagePath
@@ -189,9 +216,14 @@ class LobbyViewController: CTBaseViewController {
                 
             case .failure(let error):
                 
-                print(error.localizedDescription)
+                DispatchQueue.main.async { [weak self] in
+                    
+                    self?.resultVC?.noteLabel.text = "Error: \(error.localizedDescription)"
+                }
                 
                 self?.isFetching = false
+                
+                Timer.scheduledTimer(timeInterval: 60, target: self, selector: #selector(getter: self?.resultVC?.getMoreUserHandler), userInfo: nil, repeats: false)
             }
         })
         

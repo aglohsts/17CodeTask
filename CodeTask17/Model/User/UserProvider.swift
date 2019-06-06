@@ -73,8 +73,6 @@ class UserProvider {
                     
                     do {
                         
-//                        let json = try JSONSerialization.jsonObject(with: data, options: [.allowFragments])
-                        
                         let userObject = try strongSelf.decoder.decode(UserObject.self, from: data)
                         
                         if let linkHeader = httpResponse.allHeaderFields["Link"] as? String {
@@ -143,8 +141,6 @@ class UserProvider {
                 case 200 ..< 300:
                     
                     do {
-                        
-//                        let json = try JSONSerialization.jsonObject(with: data, options: [.allowFragments])
                         
                         let userObject = try strongSelf.decoder.decode(UserObject.self, from: data)
                         
