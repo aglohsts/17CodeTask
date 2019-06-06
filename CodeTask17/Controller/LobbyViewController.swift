@@ -23,6 +23,10 @@ class LobbyViewController: CTBaseViewController {
     
     @IBOutlet weak var resultContainerView: UIView!
     
+    var canSearch: Bool = false
+    
+    var canCancel: Bool = false
+    
     var isFetching: Bool = false
     
     var nextPagePath: String? = nil
@@ -58,6 +62,8 @@ class LobbyViewController: CTBaseViewController {
         super.viewDidLoad()
         
         searchButton.isUserInteractionEnabled = false
+        
+        cancelButton.isUserInteractionEnabled = false
         
         textFieldKVO()
     }
@@ -206,9 +212,28 @@ class LobbyViewController: CTBaseViewController {
                 if searchKeyWord == "" || searchKeyWord == nil {
                     
                     strongSelf.searchButton.isUserInteractionEnabled = false
+                    
+                    strongSelf.cancelButton.isUserInteractionEnabled = false
+
+                    DispatchQueue.main.async { [weak self] in
+                        
+                        self?.searchButton.setImage(UIImage.asset(.Search_disable), for: .normal)
+                        
+                        self?.cancelButton.setImage(UIImage.asset(.Delete_disable), for: .normal)
+                    }
+                    
                 } else {
                     
                     strongSelf.searchButton.isUserInteractionEnabled = true
+                    
+                    strongSelf.cancelButton.isUserInteractionEnabled = true
+                    
+                    DispatchQueue.main.async { [weak self] in
+                        
+                        self?.searchButton.setImage(UIImage.asset(.Search), for: .normal)
+                        
+                        self?.cancelButton.setImage(UIImage.asset(.Delete), for: .normal)
+                    }
                 }
             }
         })

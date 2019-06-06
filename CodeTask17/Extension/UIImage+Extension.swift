@@ -12,6 +12,12 @@ enum ImageAsset: String {
     
     case User
     case GitHub
+    case Delete
+    case Delete_disable
+    case Search
+    case Search_disable
+    case SearchImage
+    
 }
 
 extension UIImage {
