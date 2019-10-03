@@ -38,7 +38,16 @@ class ResultViewController: CTBaseViewController {
     
     @objc var getMoreUserHandler: (() -> Void)?
     
-    var userItems: [UserItem] = []
+    var userItems: [UserItem] = [] {
+        
+        didSet {
+            
+            DispatchQueue.main.async { [weak self] in
+                
+                self?.collectionView.reloadData()
+            }
+        }
+    }
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -96,11 +105,6 @@ extension ResultViewController: UICollectionViewDataSource {
         resultCell.layoutCell(
             imageUrl: userItems[indexPath.item].avatarUrl,
             userName: userItems[indexPath.item].login)
-        
-        DispatchQueue.main.async { [weak self] in
-            
-            self?.collectionView.reloadData()
-        }
         
         return resultCell
     }
